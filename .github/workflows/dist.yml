@@ -32,8 +32,13 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=$AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64 ../..
           make -j 2
           make install
-      - name: Cache dist
-        uses: actions/cache@v2
+      - name: df
+        run: |
+          df -h $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64
+          $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64/bin/protoc --version
+          ls -Rl $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64
+      - name: Artifact
+        uses: actions/upload-artifact@v2
         with:
           path: $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64
-          key: grpc-${{ matrix.grpc }}-${{ matrix.os }}-x64
+          name: grpc-${{ matrix.grpc }}-${{ matrix.os }}-x64
