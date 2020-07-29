@@ -37,4 +37,3 @@ jobs:
         with:
           path: $AGENT_TOOLSDIRECTORY/grpc/{{ matrix.grpc }}/x64
           key: grpc-${{ matrix.grpc }}-${{ matrix.os }}-x64
-      # Next download artifacts and create a release and update versions-manifest.json
