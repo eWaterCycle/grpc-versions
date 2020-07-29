@@ -24,21 +24,19 @@ jobs:
           submodules: true
       - name: Build
         run: |
-          mkdir -p $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64
+          mkdir -p ${{ runner.tool_cache }}/grpc/${{ matrix.grpc }}/x64
           mkdir -p cmake/build
           cd cmake/build
           cmake -DgRPC_INSTALL=ON -DgRPC_SSL_PROVIDER=package \
             -DgRPC_BUILD_TESTS=OFF -DBUILD_SHARED_LIBS=ON \
-            -DCMAKE_INSTALL_PREFIX=$AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64 ../..
+            -DCMAKE_INSTALL_PREFIX=${{ runner.tool_cache }}/grpc/${{ matrix.grpc }}/x64 ../..
           make -j 2
           make install
-      - name: df
+      - name: Echo version
         run: |
-          df -h $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64
-          $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64/bin/protoc --version
-          ls -Rl $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64
+          ls -Rl ${{ runner.tool_cache }}/grpc/${{ matrix.grpc }}/x64
       - name: Artifact
         uses: actions/upload-artifact@v2
         with:
-          path: $AGENT_TOOLSDIRECTORY/grpc/${{ matrix.grpc }}/x64
+          path: ${{ runner.tool_cache }}/grpc/${{ matrix.grpc }}/x64
           name: grpc-${{ matrix.grpc }}-${{ matrix.os }}-x64
