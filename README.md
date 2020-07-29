@@ -8,7 +8,6 @@ This repository contains the code and scripts that we use to build gRPC which is
 
 ## Add new version
 
-1. Adjust grpc version in [.github/workflows/dist.yml](.github/workflows/dist.yml)
-2. Create a release with same version
-3. Wait for job to add tarballs to release
-4. Update versions-manifest.json with new version and tarballs
+1. Create a GH release with same version as gRPC version you want to build. For example `v1.30.2`.
+1. Wait for GH action job to add tarballs to release
+1. Update versions-manifest.json with new version and tarballs
