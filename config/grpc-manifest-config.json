@@ -1,0 +1,8 @@
+{
+    "regex": "grpc-\\d+\\.\\d+\\.\\d+-(\\w+)-(\\d+\\.\\d+)-(x\\d+)",
+    "groups": {
+        "arch": 3,
+        "platform": "linux",
+        "platform_version": 2
+    }
+}

@@ -8,6 +8,6 @@ This repository contains the code and scripts that we use to build gRPC which is
 
 ## Add new version
 
-1. Create a GH release with same version as gRPC version you want to build. For example `v1.30.2`.
-1. Wait for GH action job to add tarballs to release
-1. Update versions-manifest.json with new version and tarballs
+1. Start a [build workflow](https://github.com/eWaterCycle/grpc-versions/actions?query=workflow%3A%22Generate+grpc+version%22), set version to for example `1.35.0`. Will create a release with compiled grpc
+1. Start a [manifest update workflow](https://github.com/eWaterCycle/grpc-versions/actions?query=workflow%3A%22Create+Pull+Request%22) to get updated `versions-manifest.json` file
+1. Merge the generated PR
