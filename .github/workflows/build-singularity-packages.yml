@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       VERSION:
-        description: 'gRPC version to build and upload (eg. 3.7.1)'
+        description: 'gRPC version to build and upload (eg. 1.35.0)'
         required: true
 
 env:
