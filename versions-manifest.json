@@ -1,5 +1,26 @@
 [
   {
+    "version": "1.48.2",
+    "stable": true,
+    "release_url": "https://github.com/eWaterCycle/grpc-versions/releases/tag/1.48.2-3855289786",
+    "files": [
+      {
+        "filename": "grpc-1.48.2-ubuntu-20.04-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "platform_version": "20.04",
+        "download_url": "https://github.com/eWaterCycle/grpc-versions/releases/download/1.48.2-3855289786/grpc-1.48.2-ubuntu-20.04-x64.tar.gz"
+      },
+      {
+        "filename": "grpc-1.48.2-ubuntu-22.04-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "platform_version": "22.04",
+        "download_url": "https://github.com/eWaterCycle/grpc-versions/releases/download/1.48.2-3855289786/grpc-1.48.2-ubuntu-22.04-x64.tar.gz"
+      }
+    ]
+  },
+  {
     "version": "1.35.0",
     "stable": true,
     "release_url": "https://github.com/eWaterCycle/grpc-versions/releases/tag/1.35.0-517581418",
