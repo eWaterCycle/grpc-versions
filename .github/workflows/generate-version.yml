@@ -74,7 +74,7 @@ jobs:
           for (let artifactDir of fs.readdirSync('.')) {
             let artifactName = fs.readdirSync(`${artifactDir}`)[0];
             console.log(`Upload ${artifactName} asset`);
-            github.repos.uploadReleaseAsset({
+            github.rest.repos.uploadReleaseAsset({
               owner: context.repo.owner,
               repo: context.repo.repo,
               release_id: ${{ steps.create_release.outputs.id }},
