@@ -21,7 +21,7 @@ jobs:
       matrix:
         os: [ubuntu-20.04, ubuntu-22.04]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           repository: grpc/grpc
           ref: v${{ env.VERSION }}
@@ -45,7 +45,7 @@ jobs:
           mkdir ${{ runner.temp }}/artifact
           tar -C ${{ runner.tool_cache }}/grpc/${{ env.VERSION }}/x64 -zcf ${{ runner.temp }}/artifact/${{ env.ARTIFACT_NAME }}.tar.gz .
       - name: Publish artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ env.ARTIFACT_NAME }}
           path: ${{ runner.temp }}/artifact
@@ -54,19 +54,19 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - uses: actions/download-artifact@v2
+    - uses: actions/download-artifact@v3
     - name: Publish Release ${{ env.VERSION }}
       id: create_release
-      uses: actions/create-release@v1
+      uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ env.VERSION }}-${{ github.run_id }}
-        release_name: ${{ env.VERSION }}
+        name: ${{ env.VERSION }}
         body: |
           gRPC v${{ env.VERSION }} for use in GH Actions
     - name: Upload release assets
-      uses: actions/github-script@v2
+      uses: actions/github-script@v6
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
